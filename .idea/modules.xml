@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Beastify/Beastify.iml" filepath="$PROJECT_DIR$/Beastify/Beastify.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Borderify/Borderify.iml" filepath="$PROJECT_DIR$/Borderify/Borderify.iml" />
+    </modules>
+  </component>
+</project>
