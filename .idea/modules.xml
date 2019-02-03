@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Beastify/Beastify.iml" filepath="$PROJECT_DIR$/Beastify/Beastify.iml" />
       <module fileurl="file://$PROJECT_DIR$/Borderify/Borderify.iml" filepath="$PROJECT_DIR$/Borderify/Borderify.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LearnJS/LearnJS.iml" filepath="$PROJECT_DIR$/LearnJS/LearnJS.iml" />
     </modules>
   </component>
 </project>
