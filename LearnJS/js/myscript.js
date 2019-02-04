@@ -1,46 +1,29 @@
-let foo = (function(){
-    let obj = {greeting1: "hello", greeting2: "bye"};
-    return {
-        display: function(){
-            console.log(obj.greeting1);
-        },
-        out: function () {
-            console.log(obj.greeting2);
-        }
-    }
-})();
+var country = {
 
-function getFactorial(n){
-    if (n === 1 || n === 0){
-        return 1;
-    }
-    else{
+    name: "Швейцария",
+    languages: ["немецкий", "французский", "итальянский"],
+    capital:{
 
-        return n * getFactorial(n - 1);
-    }
-}
+        name: "Берн",
+        population: 126598
+    },
+    cities: [
+        { name: "Цюрих", population: 378884},
+        { name: "Женева", population: 188634},
+        { name: "Базель", population: 164937}
+    ],
+    display: function () {
+        // вывод всех элементов из country.languages
+        document.write("<h2>Официальные языки Швейцарии</h2>");
+        for(let i in this.languages)
+            document.write(this.languages[i] + "<br/>");
 
-function getFibonachi(n)
-{
-    if (n == 0){
-        return 0;
+// вывод всех элементов из country.cities
+        document.write("<h2>Города Швейцарии</h2>");
+        for(let i=0; i < this.cities.length; i++)
+            document.write("в городе " + this.cities[i].name + " проживает " + this.cities[i].population + " человек <br/>");
     }
-    if (n == 1){
-        return 1;
-    }
-    else{
-        return getFibonachi(n - 1) + getFibonachi(n - 2);
-    }
-}
-
-function change(user){
-    // полная переустановка объекта
-    user.name = 'Tom';
-}
-
-var bob ={
-    name: "Bob"
 };
-console.log("before change:", bob.name);    // Bob
-change(bob);
-console.log("after change:", bob.name);     // Bob
+document.write("number of args: " + country.display.caller);
+
+
