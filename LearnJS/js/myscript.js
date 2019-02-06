@@ -24,6 +24,6 @@ var country = {
             document.write("в городе " + this.cities[i].name + " проживает " + this.cities[i].population + " человек <br/>");
     }
 };
-document.write("number of args: " + country.display.caller);
+country.display();
 
 
