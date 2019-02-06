@@ -1,4 +1,4 @@
-var country = {
+let country = {
 
     name: "Швейцария",
     languages: ["немецкий", "французский", "итальянский"],
@@ -24,6 +24,20 @@ var country = {
             document.write("в городе " + this.cities[i].name + " проживает " + this.cities[i].population + " человек <br/>");
     }
 };
-country.display();
 
+function printNode (node, nodeLevel){
+    let indent = 4;
+    for(let child of node.childNodes){
+        let str = ' '.repeat(nodeLevel*indent) /*+ 'name='*/ + child.nodeName /*+ ' type=' + child.nodeType*/;
+        if(child.nodeType === 3){
+            str += "=" + child.nodeValue;
+        }
+        console.log(str);
+        if(child.nodeType === 1){
+            printNode(child, nodeLevel+1);
+        }
+    }
+}
 
+let el = document.querySelector("div.article");
+printNode(document, 0);
