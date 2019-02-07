@@ -26,23 +26,30 @@ let country = {
 };
 
 function printNode (node, nodeLevel){
-    let indent = 4;
-    for(let child of node.childNodes){
-        let str = ' '.repeat(nodeLevel*indent) /*+ 'name='*/ + child.nodeName /*+ ' type=' + child.nodeType*/;
-        if(child.nodeType === 3){
-            str += "=" + child.nodeValue;
-        }else if(child.nodeType === 3) {
-            str += "atr=" + child.nodeValue;
+    let indent = 3;
+    let str = ' '.repeat(nodeLevel*indent);
+    if(node.nodeType === 2) {
+        str += "atr: ";
+    }
+    str += node.nodeName;
+    if(node.nodeValue !== null){
+        str += "=" + node.nodeValue;
+    }
+    console.log(str);
+    if(node.hasAttributes){
+        for (let attr of node.attributes) {
+            printNode(attr, nodeLevel+1);
         }
-        console.log(str);
-        if(child.nodeType === 1){
-            for (let attr of child.attributes) {
-                printNode(attr, nodeLevel+1);
-            }
+    }
+    if(node.hasChildNodes()){
+        for(let child of node.childNodes){
             printNode(child, nodeLevel+1);
         }
     }
 }
 
-let el = document.querySelector("div.article");
-printNode(el, 0);
+let el = document.querySelector("div.chapter");
+let clone = el.cloneNode(true);
+let before = document.querySelector("div.article");
+before.insertBefore(clone, null);
+printNode(document.body, 0);
