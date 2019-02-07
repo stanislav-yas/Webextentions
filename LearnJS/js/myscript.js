@@ -31,13 +31,18 @@ function printNode (node, nodeLevel){
         let str = ' '.repeat(nodeLevel*indent) /*+ 'name='*/ + child.nodeName /*+ ' type=' + child.nodeType*/;
         if(child.nodeType === 3){
             str += "=" + child.nodeValue;
+        }else if(child.nodeType === 3) {
+            str += "atr=" + child.nodeValue;
         }
         console.log(str);
         if(child.nodeType === 1){
+            for (let attr of child.attributes) {
+                printNode(attr, nodeLevel+1);
+            }
             printNode(child, nodeLevel+1);
         }
     }
 }
 
 let el = document.querySelector("div.article");
-printNode(document, 0);
+printNode(el, 0);
