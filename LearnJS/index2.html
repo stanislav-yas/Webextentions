@@ -2,39 +2,37 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <style>
+        #rect{
+            width:50px;
+            height:50px;
+            background-color:blue;
+        }
+    </style>
 </head>
 <body>
-<div class="article">
-    <h3>Заголовок статьи</h3>
-    <p>Первый абзац</p>
-    <p>Второй абзац</p>
-</div>
+<div id="rect" onmouseover="handler(event)"></div>
 <script>
-/*    var articleDiv = document.querySelector("div.article");
-    var nodes = articleDiv.childNodes;
-    for(var i=0; i<nodes.length;i++){
-
-        var type = "";
-        if(nodes[i].nodeType===1)
-            type="элемент";
-        else if(nodes[i].nodeType===2)
-            type="атрибут";
-        else if(nodes[i].nodeType===3)
-            type="текст";
-
-        console.log(nodes[i].nodeName + ": " + type + " = " + nodes[i].nodeValue);
-    }*/
-
-    var articleDiv = document.querySelector("div.article");
-
-    // получаем первый дочерний элемент
-    var node = articleDiv.firstChild;
-    console.log(node.nodeName);
-    // обращаемся к следующему узлу, пока он определен
-    while((node=node.nextSibling)!==null){
-
-        console.log(node.nodeName);
+    var clicks = 0;
+    function handler(e) {
+        alert(e.type)
     }
+    function handlerOne(e){
+
+        alert(e.type);
+    }
+    function handlerTwo(e){
+
+        clicks++;
+        var newNode = document.createElement("p");
+        newNode.textContent = "произошло нажатие " + clicks;
+        document.body.appendChild(newNode);
+    }
+    var rect = document.getElementById("rect");
+    // прикрепляем первый обработчик
+    rect.addEventListener("click", handlerOne);
+    // прикрепляем второй обработчик
+    rect.addEventListener("click", handlerTwo);
 </script>
 </body>
 </html>
