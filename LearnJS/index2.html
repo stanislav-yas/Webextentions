@@ -3,36 +3,39 @@
 <head>
     <meta charset="utf-8" />
     <style>
-        #rect{
+        #blueRect{
+            width:100px;
+            height:100px;
+            background-color:blue;
+        }
+        #redRect{
             width:50px;
             height:50px;
-            background-color:blue;
+            background-color:red;
         }
     </style>
 </head>
 <body>
-<div id="rect" onmouseover="handler(event)"></div>
+<div id="blueRect">
+    <div id="redRect"></div>
+</div>
+
 <script>
-    var clicks = 0;
-    function handler(e) {
-        alert(e.type)
-    }
-    function handlerOne(e){
+    var redRect = document.getElementById("redRect");
+    redRect.addEventListener("click", function(e){
+        console.log("Событие на redRect");
+        //e.stopPropagation();
+    },true);
 
-        alert(e.type);
-    }
-    function handlerTwo(e){
+    var blueRect = document.getElementById("blueRect");
+    blueRect.addEventListener("click", function(){
+        console.log("Событие на blueRect");
+    },true);
 
-        clicks++;
-        var newNode = document.createElement("p");
-        newNode.textContent = "произошло нажатие " + clicks;
-        document.body.appendChild(newNode);
-    }
-    var rect = document.getElementById("rect");
-    // прикрепляем первый обработчик
-    rect.addEventListener("click", handlerOne);
-    // прикрепляем второй обработчик
-    rect.addEventListener("click", handlerTwo);
+    document.body.addEventListener("click", function(){
+        console.log("Событие на body");
+    },true);
+
 </script>
 </body>
 </html>
