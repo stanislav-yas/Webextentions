@@ -3,39 +3,66 @@
 <head>
     <meta charset="utf-8" />
     <style>
+        html, body{
+            margin:0;
+            overflow:hidden;
+        }
         #blueRect{
             width:100px;
             height:100px;
             background-color:blue;
         }
-        #redRect{
-            width:50px;
-            height:50px;
-            background-color:red;
-        }
     </style>
 </head>
 <body>
-<div id="blueRect">
-    <div id="redRect"></div>
-</div>
+<div id="blueRect" ></div>
 
 <script>
-    var redRect = document.getElementById("redRect");
-    redRect.addEventListener("click", function(e){
-        console.log("Событие на redRect");
-        //e.stopPropagation();
-    },true);
+    function moveRect(e){
 
+        var blueRect = document.getElementById("blueRect");
+        // получаем стиль для blueRect
+        var cs = window.getComputedStyle(blueRect);
+
+        var left = parseInt(cs.marginLeft);
+        var top = parseInt(cs.marginTop);
+
+        switch(e.key){
+
+            case 37:  // если нажата клавиша влево
+                if(left>0)
+                    blueRect.style.marginLeft = left - 10 + "px";
+                break;
+            case 38:   // если нажата клавиша вверх
+                if(top>0)
+                    blueRect.style.marginTop = top - 10 + "px";
+                break;
+            case 39:   // если нажата клавиша вправо
+                if(left < document.documentElement.clientWidth - 100)
+                    blueRect.style.marginLeft = left + 10 + "px";
+                break;
+            case 40:   // если нажата клавиша вниз
+                if(top < document.documentElement.clientHeight - 100)
+                    blueRect.style.marginTop = top + 10 + "px";
+                break;
+        }
+    }
+    function setColor(e){
+
+        if(e.type==="mouseover")
+            e.target.style.backgroundColor = "red";
+        else if(e.type==="mouseout")
+            e.target.style.backgroundColor = "blue";
+        console.clear();
+        console.log("screenX: " + e.screenX);
+        console.log("screenY: " + e.screenY);
+        console.log("clientX: " + e.clientX);
+        console.log("clientY: " + e.clientY);
+    }
     var blueRect = document.getElementById("blueRect");
-    blueRect.addEventListener("click", function(){
-        console.log("Событие на blueRect");
-    },true);
-
-    document.body.addEventListener("click", function(){
-        console.log("Событие на body");
-    },true);
-
+    blueRect.addEventListener("mouseover", setColor);
+    blueRect.addEventListener("mouseout", setColor);
+    blueRect.addEventListener("keydown", moveRect, true);
 </script>
 </body>
 </html>
