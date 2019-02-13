@@ -16,8 +16,16 @@
 </head>
 <body>
 <div id="blueRect" ></div>
-
+<div>
+    <form name="search" onsubmit="validateForm(event)">
+        <input type="text" name="key" value="hello world"></input>
+        <input type="submit" name="send"></input>
+    </form>
+</div>
 <script>
+    function validateForm(e) {
+        document.forms["search"].elements["key"].value = "";
+    }
     function moveRect(e){
 
         var blueRect = document.getElementById("blueRect");
@@ -27,21 +35,21 @@
         var left = parseInt(cs.marginLeft);
         var top = parseInt(cs.marginTop);
 
-        switch(e.key){
+        switch(e.code){
 
-            case 37:  // если нажата клавиша влево
+            case "ArrowLeft":  // если нажата клавиша влево
                 if(left>0)
                     blueRect.style.marginLeft = left - 10 + "px";
                 break;
-            case 38:   // если нажата клавиша вверх
+            case "ArrowUp":   // если нажата клавиша вверх
                 if(top>0)
                     blueRect.style.marginTop = top - 10 + "px";
                 break;
-            case 39:   // если нажата клавиша вправо
+            case "ArrowRight":   // если нажата клавиша вправо
                 if(left < document.documentElement.clientWidth - 100)
                     blueRect.style.marginLeft = left + 10 + "px";
                 break;
-            case 40:   // если нажата клавиша вниз
+            case "ArrowDown":   // если нажата клавиша вниз
                 if(top < document.documentElement.clientHeight - 100)
                     blueRect.style.marginTop = top + 10 + "px";
                 break;
@@ -59,10 +67,10 @@
         console.log("clientX: " + e.clientX);
         console.log("clientY: " + e.clientY);
     }
-    var blueRect = document.getElementById("blueRect");
+/*    var blueRect = document.getElementById("blueRect");
     blueRect.addEventListener("mouseover", setColor);
     blueRect.addEventListener("mouseout", setColor);
-    blueRect.addEventListener("keydown", moveRect, true);
+    document.addEventListener("keydown", moveRect, true);*/
 </script>
 </body>
 </html>
