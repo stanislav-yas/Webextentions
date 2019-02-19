@@ -37,6 +37,17 @@
     </form>
 </div>
 <script>
+    let users = ["Tom", "Bob", "Sam"];
+    let items = users.entries();
+    let result = items.next();
+
+    while(result.done === false){
+        console.log(result.value[0], result.value[1]);
+        result = items.next();
+    }
+    for (let user of users.entries()) {
+        console.log(user);
+    }
     function validateForm(e) {
         el = document.forms["search"].elements["textArea"];
         if(e.type === "reset"){
