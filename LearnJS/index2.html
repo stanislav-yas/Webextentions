@@ -38,14 +38,10 @@
 </div>
 <script>
     let users = ["Tom", "Bob", "Sam"];
-    let items = users.entries();
-    let result = items.next();
+    let s = new Set(users);
+    let m = new Map([["a", 1], [2, "b"], ["c", true]]);
 
-    while(result.done === false){
-        console.log(result.value[0], result.value[1]);
-        result = items.next();
-    }
-    for (let user of users.entries()) {
+    for (let user of users) {
         console.log(user);
     }
     function validateForm(e) {
