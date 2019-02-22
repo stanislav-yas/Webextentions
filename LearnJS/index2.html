@@ -37,12 +37,32 @@
     </form>
 </div>
 <script>
-    let users = ["Tom", "Bob", "Sam"];
-    let s = new Set(users);
-    let m = new Map([["a", 1], [2, "b"], ["c", true]]);
-
-    for (let user of users) {
-        console.log(user);
+    let request = new XMLHttpRequest();
+    request.onreadystatechange = reqReadyStateChanged;
+    request.onload = reqOnLoad;
+    request.open("GET", "http://localhost:63342/Webextentions/LearnJS/hell.txt", true);
+    request.send();
+    function reqOnLoad() {
+        document.write("reqOnLoadFunction: " + request.readyState + "<br>");
+        if(request.readyState === 4){
+            if(request.status===200)
+                document.write("Текст ответа: " + request.statusText + " => " + request.responseText + "<br>");
+            else if(request.status===404)
+                document.write("Ресурс не найден: " + request.statusText + "<br>" + request.responseText);
+            else
+                document.write(request.statusText);
+        }
+    }
+    function reqReadyStateChanged(){
+        document.write("reqReadyStateFunction: " + request.readyState + "<br>");
+        if(request.readyState === 4){
+            if(request.status===200)
+                document.write("Текст ответа: " + request.statusText + " => " + request.responseText + "<br>");
+            else if(request.status===404)
+                document.write("Ресурс не найден: " + request.statusText);
+            else
+                document.write(request.statusText);
+        }
     }
     function validateForm(e) {
         el = document.forms["search"].elements["textArea"];
