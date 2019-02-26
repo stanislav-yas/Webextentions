@@ -37,16 +37,22 @@
     </form>
 </div>
 <script>
+    let formData = new FormData();
+    formData.append('name', 'Tom');
+    formData.append('age', 23);
     let request = new XMLHttpRequest();
-    request.onreadystatechange = reqReadyStateChanged;
+    //request.onreadystatechange = reqReadyStateChanged;
     request.onload = reqOnLoad;
-    request.open("GET", "http://localhost:63342/Webextentions/LearnJS/hell.txt", true);
+    request.open("GET", "http://localhost:63342/Webextentions/LearnJS/hello.txt", true);
+    request.open()
     request.send();
     function reqOnLoad() {
-        document.write("reqOnLoadFunction: " + request.readyState + "<br>");
+        //document.write("reqOnLoadFunction: " + request.readyState + "<br>");
         if(request.readyState === 4){
-            if(request.status===200)
-                document.write("Текст ответа: " + request.statusText + " => " + request.responseText + "<br>");
+            if(request.status===200) {
+                //document.write("Текст ответа: " + request.statusText + " => " + request.responseText + "<br>");
+                document.getElementById("message").innerText = request.responseText;
+            }
             else if(request.status===404)
                 document.write("Ресурс не найден: " + request.statusText + "<br>" + request.responseText);
             else
