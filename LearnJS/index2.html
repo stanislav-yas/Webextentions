@@ -43,9 +43,9 @@
     let request = new XMLHttpRequest();
     //request.onreadystatechange = reqReadyStateChanged;
     request.onload = reqOnLoad;
-    request.open("GET", "http://localhost:63342/Webextentions/LearnJS/hello.txt", true);
-    request.open()
-    request.send();
+    //request.open("GET", "http://localhost:63342/Webextentions/LearnJS/hello.txt", true);
+    request.open("POST", "http://localhost:63342/Webextentions/LearnJS/hello.txt");
+    request.send(formData);
     function reqOnLoad() {
         //document.write("reqOnLoadFunction: " + request.readyState + "<br>");
         if(request.readyState === 4){
