@@ -1,0 +1,114 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 550px;
+    height: 335px;
+
+    font-size: 10px;
+    font-family: "Arial", sans-serif;
+    color: white;
+    word-wrap: break-word;
+}
+
+.block-positioner {
+    width: 350px;
+    margin: 0 auto;
+}
+
+.header, .menu, .footer, .promo-block, .content-block {
+    padding: 5px;
+}
+
+.header {
+    background-color: #c0392b;
+    min-height: 25px;
+}
+
+.header-wrapper {
+    background-color: #34495e;
+    padding: 10px 0;
+}
+
+.menu {
+    background-color: #3498db;
+    min-height: 25px;
+}
+
+.menu-wrapper {
+    background-color: #3498db;
+}
+
+.promo-wrapper {
+    background-color: #34495e;
+    padding: 10px 0;
+}
+
+.promo-wrapper::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.promo-block {
+    background-color: #c0392b;
+    min-height: 50px;
+    min-width: 160px;
+}
+
+.promo-block:first-child {
+    float: left;
+    margin-right: 5px;
+}
+
+.promo-block:last-child {
+    float: right;
+    margin-left: 5px;
+}
+
+.content-wrapper {
+    padding: 10px 0;
+}
+
+.content-wrapper:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.content-block {
+    background-color: #3498db;
+    float: left;
+    margin-right: 10px;
+    min-height: 100px;
+    min-width: 180px;
+}
+
+.content-block:first-child,
+.content-block:last-child {
+    min-width: 60px;
+}
+
+.content-block:last-child {
+    margin-right: 0;
+    float: right;
+}
+
+.footer {
+    background-color: #34495e;
+    min-height: 25px;
+}
+
+.footer-wrapper {
+    background-color: #34495e;
+}
+
+/*
+  Используемые цвета:
+  #34495e – мокрый асфальт
+  #c0392b – красный
+  #3498db – синий
+*/
